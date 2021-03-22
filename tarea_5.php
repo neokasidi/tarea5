@@ -1,19 +1,13 @@
-<!--Tarea semana 5
-	Autor: Sergio Montecinos M.
- -->
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Tarea Semana 5</title>
 </head>
 <body>
 	<form action="" method="post" accept-charset="utf-8">
-		<input type="text" name="uno" pattern="[0-9]+">
+		<input type="text" name="campoUno">
 		<br>
 		<br>
-		<input type="text" name="dos" pattern="[0-9]+">
+		<input type="text" name="CampoDos">
 		<br>
 		<br>
 		<select name="opcion">
@@ -24,59 +18,50 @@
 		</select>
 		<br>
 		<br>
-		<button type="submit">calcular</button>
+		<button type="submit">Enviar</button>
 	</form>
+</body>
+</html>
+
 <?php 
+	
+	$uno = isset($_POST['campoUno']) ;
+	$dos = isset($_POST['CampoDos']);
+	$opcion = isset($_POST['opcion']);
 
-$uno = $_POST['uno'];
-$dos = $_POST['dos'];
-$opcion = $_POST['opcion']; 
-
-if (!empty($uno) && !empty($dos)) {
-	if (is_numeric($uno) && is_numeric($dos)) {
-		switch ($opcion) {
-		 	case '1':
-		 		echo "la suma es: " . sumar($uno,$dos);
-		 		break;
-			case '2':
-		 		echo "la potencia de los valores es: " . potencia($uno,$dos);
-		 		break;
-			case 3:
-		 		echo "el resultado de la multiplicacion es: " . multiplicar($uno,$dos);
-		 		break;
-			case 4:
-		 		echo "el resultado de la divicion es: " . dividir($uno,$dos);
-		 		break; 	
-		 	default:
-		 		break;
-		 }
+	if ($opcion == 1) {
+		echo "El resultado es: " . sumar($uno,$dos);
 	}
-	else
-	{
-		echo "Debe ingresar solo numeros.";
-	}
-}
-else{
-	echo "Debe ingresar un valor valido";
-}
- 
 
-function sumar($a,$b){
-   return $a + $b;
+	if ($opcion == 2) {
+		echo "El resultado es: " . potencia($uno,$dos);
+	}
+
+	if ($opcion == 3) {
+		echo "El resultado es: " . multiplicar($uno,$dos);
+	}
+	if ($opcion == 4) {
+		echo "El resultado es: " . dividir($uno,$dos);
+	}
+
+	function sumar($a,$b){
+   $resultado = $a + $b;
+   return $resultado;
 }
 
 function potencia($a,$b){
-	return pow($a,$b);
+	$resultado = pow($a,$b);
+	return $resultado;
 }
 
 function multiplicar($a,$b){
-	return $a * $b;
+	$resultado = $a * $b;
+	return $resultado;
 }
 
 function dividir($a,$b){
-	return $a / $b;
+	$resultado = $a / $b;
+	return $resultado;
 }
-	
- ?>
-</body>
-</html>
+
+?>
